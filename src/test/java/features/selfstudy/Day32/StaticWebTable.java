@@ -52,7 +52,6 @@ public class StaticWebTable {
 	    }
 	    //using for each
 	    System.out.println("Start of Traditional For each:");
-	    int rowin =2;
 	    for(WebElement r: tr.subList(1, tr.size())) {
 	    	//List<WebElement> col = driver.findElements(By.xpath("//table[@name='BookTable']//tr["+rowin+"]//td"));
 	    	List<WebElement> col = r.findElements(By.xpath(".//td"));
@@ -60,7 +59,7 @@ public class StaticWebTable {
 	    		System.out.print(c.getText()+"\t");    		 
 	    	}
 	    	System.out.println();
-	    	rowin++;
+	 
 	    }
 	    //using stream method
 	    WebElement targetTable = driver.findElement(By.xpath("//table[@name='BookTable']"));
@@ -77,9 +76,25 @@ public class StaticWebTable {
                          System.out.println();
                          });
 	     
-	    
+	  //6) Read the data or get the data whos author was Mukesh
+	    System.out.println("Mukesh:");
+	    int d =2;
+	    for(WebElement r: tr.subList(1, tr.size())) {
+	    	//List<WebElement> col = driver.findElements(By.xpath("//table[@name='BookTable']//tr["+rowin+"]//td"));
+	    	List<WebElement> au = r.findElements(By.xpath(".//td[2]"));
+	    	if(au.get(d).getText().equalsIgnoreCase("Mukesh")) {
+	    		List<WebElement> col = r.findElements(By.xpath(".//td"));
+	    		for(WebElement c:col) {
+	    			System.out.print(c.getText()+"\t");    		 
+	    		}
+	    	}
+	    	d++;
+	    	System.out.println();
+	    }
 	    
 	}
-
+	
+	
+	
 
 }
